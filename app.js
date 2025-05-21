@@ -114,19 +114,19 @@ app.use("/listings/:id/reviews",reviewRouter);
 app.use("/",userRouter);
 
 
-// app.all("*",(req,res,next)=>
-//     {
-//         next(new expressError(404,"Page not found"));
-//     });
+app.all("*",(req,res,next)=>
+    {
+        next(new expressError(404,"Page not found"));
+    });
     
 
-// //error middleware for create route
-// app.use((err,req,res,next)=>
-// {
-//     let{statusCode=500,message="Something went wrong"}=err;
-//    // res.status(statusCode).send(message);
-//    res.status(statusCode).render("listings/error.ejs",{err});
-// });
+//error middleware for create route
+app.use((err,req,res,next)=>
+{
+    let{statusCode=500,message="Something went wrong"}=err;
+   // res.status(statusCode).send(message);
+   res.status(statusCode).render("listings/error.ejs",{err});
+});
 
 
 
