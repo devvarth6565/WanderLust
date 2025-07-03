@@ -9,7 +9,13 @@
     <div class="card col-6 offset-3 show-card listing-card ">
         <img src="<%=listing.image.url%>" class="card-img-top show-image" alt="listing_image">
         <div class="card-body">
-          <i><p> Owned By..<%=listing.owner.username%></p></i>
+          <i><p> Owned By..
+            <% if (listing.owner && listing.owner.username) { %>
+              <%= listing.owner.username %>
+            <% } else { %>
+              Unknown
+            <% } %>
+          </p></i>
           <br>
           <p class="card-text">
            
@@ -23,7 +29,7 @@
         
       </div>
     </div>
-   <%if(currentUser && listing.owner._id.equals(currentUser._id)){%>
+   <% if (currentUser && listing.owner && listing.owner._id && listing.owner._id.equals && listing.owner._id.equals(currentUser._id)) { %>
   <div class=" btns ">
     <a href="/listings/<%=listing._id%>/edit" class="btn btn-dark col-1 offset-3 edit-btn">Edit</a>
   
@@ -31,7 +37,7 @@
       <button class="btn btn-dark offset-5 ">Delete</button>
     </form>
     </div>
-<%}%>
+<% } %>
      
 
 
